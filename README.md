@@ -1,26 +1,17 @@
-# deploy-video-service
+# deploy-video-edge
 
-Deploy a service to collect photos and information from a video camera.
+Deploy a service to collect photos and information from a video camera (running as dedicated edge-service).
 
 ## Slik går du fram for å kjøre dette lokalt eller på en skytjeneste
-
-1. Sette opp virtuell server. Dette bør være en server med GPU for å kjøre real-time video analyse
-  
+1. Sette opp virtuell server.
 2. Networking: Open up port 8080 for incoming traffic from any * incoming source.
-
 3. kommandoer for å innstallere containere (kan trolig optimaliseres - trenger ikke alt dette)
 
 ```Shell
 sudo apt update
 
-## conda installasjon
-curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-sh Miniconda3-latest-Linux-x86_64.sh
-## restart shell
-conda install pytorch torchvision torchaudio cpuonly -c pytorch
-
 sudo apt install docker-compose
-sudo git clone https://github.com/langrenn-sprint/deploy-video-service.git
+sudo git clone https://github.com/langrenn-sprint/deploy-video-edge.git
 # copy .env file og secrets (inkl GOOGLE_APPLICATION_CREDENTIALS)
 sudo usermod -aG docker $USER #deretter logge ut og inn igjen
 # secrets og konfigurasjon
@@ -49,8 +40,6 @@ mkdir files
 
 ```Shell
 docker-compose pull && docker-compose up -d # Henter siste versjon av containere og starter dem
-# evt starte opp uten video-service
-docker-compose up photo-service-gui event-service photo-service competition-format-service user-service mongodb
 ```
 
 ## Monitorere logger
