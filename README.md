@@ -19,6 +19,7 @@ sudo usermod -aG docker $USER #deretter logge ut og inn igjen
 source .env
 docker-compose pull
 docker-compose up &
+docker-compose up photo-service race-service event-service competition-format-service user-service mongodb
 ```
 
 ## Tilgang til Google Pub-sub (lokasjon til secrets file må ligge i .env GOOGLE_APPLICATION_CREDENTIALS)
