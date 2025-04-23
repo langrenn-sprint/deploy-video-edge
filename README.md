@@ -41,6 +41,8 @@ mkdir files
 
 ```Shell
 docker-compose pull && docker-compose up -d # Henter siste versjon av containere og starter dem
+docker compose up integration-service race-service competition-format-service photo-service user-service event-service mongodb photo-service-gui
+
 ```
 
 ## Monitorere logger
