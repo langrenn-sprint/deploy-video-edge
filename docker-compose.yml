@@ -1,4 +1,3 @@
-version: '3'
 services:
   photo-service-gui:
     image: ghcr.io/langrenn-sprint/photo-service-gui:latest
@@ -164,6 +163,9 @@ services:
       - type: bind
         source: ${LOCAL_PHOTO_DIRECTORY}
         target: /app/integration_service/files
+      - type: bind
+        source: ./global_settings.json
+        target: /app/integration_service/config/global_settings.json
       - type: bind
         source: ./error.log
         target: /app/error.log
