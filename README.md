@@ -70,9 +70,7 @@ docker-compose down
 ## slette images og containere
 
 ```Shell
-docker image prune -a
-docker rm -f $(sudo docker ps -a -q)
-docker network prune
+docker system prune -a --volumes
 ```
 
 ## Miljøvariable
