@@ -172,6 +172,8 @@ services:
       - type: bind
         source: ./application_default_credentials.json
         target: /app/application_default_credentials.json
+    sysctls:
+      fs.inotify.max_user_watches: 524288
   mongodb:
     image: mongo:latest
     ports:
