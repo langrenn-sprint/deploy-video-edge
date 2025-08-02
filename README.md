@@ -32,6 +32,14 @@ scp -i key.pem -r application_default_credentials.json azureuser@20.251.168.187:
 Tips: chmod 700 på nøkkelen
 ```
 
+### If required - virtual environment
+
+Install: curl <https://pyenv.run> | bash
+Create: python -m venv .venv (replace .venv with your preferred name)
+Install python 3.13: pyenv install 3.13
+Activate:
+source .venv/bin/activate
+
 ## Starte opp containere
 
 Når du har logga inn på serveren, gå til folderen der docker-compose filen ligger og kjør følgende kommandoer:
@@ -102,5 +110,5 @@ LOGGING_LEVEL=INFO
 USERS_HOST_SERVER=localhost
 USERS_HOST_PORT=8086
 VIDEO_URL=https://harnaes.no/maalfoto/2023SkiMaal.mp4
-LOCAL_PHOTO_DIRECTORY=/home/github/deploy-video-service/files
+LOCAL_PHOTO_DIRECTORY=/home/heming/github/deploy-video-edge/files
 ```
