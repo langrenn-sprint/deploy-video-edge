@@ -193,6 +193,49 @@ services:
       - type: bind
         source: ./error.log
         target: /app/error.log
+  video-service-filter:
+    image: ghcr.io/langrenn-sprint/video-service:latest
+    user: "1000:1000"
+    environment:
+      - LOGGING_LEVEL=${LOGGING_LEVEL}
+      - EVENTS_HOST_SERVER=event-service
+      - EVENTS_HOST_PORT=8080
+      - PHOTOS_HOST_SERVER=photo-service
+      - PHOTOS_HOST_PORT=8080
+      - USERS_HOST_SERVER=user-service
+      - USERS_HOST_PORT=8080
+      - MODE=FILTER
+    volumes:
+      - type: bind
+        source: ./global_settings.json
+        target: /app/config/global_settings.json
+      - type: bind
+        source: ${LOCAL_PHOTO_DIRECTORY}
+        target: /app/video_service/files
+      - type: bind
+        source: ./error.log
+        target: /app/error.log
+  video-service-detect:
+    image: ghcr.io/langrenn-sprint/video-service:latest
+    environment:
+      - LOGGING_LEVEL=${LOGGING_LEVEL}
+      - EVENTS_HOST_SERVER=event-service
+      - EVENTS_HOST_PORT=8080
+      - PHOTOS_HOST_SERVER=photo-service
+      - PHOTOS_HOST_PORT=8080
+      - USERS_HOST_SERVER=user-service
+      - USERS_HOST_PORT=8080
+      - MODE=DETECT
+    volumes:
+      - type: bind
+        source: ./global_settings.json
+        target: /app/config/global_settings.json
+      - type: bind
+        source: ${LOCAL_PHOTO_DIRECTORY}
+        target: /app/video_service/files
+      - type: bind
+        source: ./error.log
+        target: /app/error.log
   mongodb:
     image: mongo:latest
     ports:

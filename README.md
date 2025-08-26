@@ -44,12 +44,14 @@ source .venv/bin/activate
 
 Når du har logga inn på serveren, gå til folderen der docker-compose filen ligger og kjør følgende kommandoer:
 
-```Filhåndtering - lage bind-mounts som stemmer med referansene i docker-compose filen
+```Filhåndtering - lage bind-mounts som stemmer med referansene i docker-compose filen og sikre at alle har tilgang
 mkdir files
+sudo chmod -R 777 files
+
 
 ```Shell
 docker-compose pull && docker-compose up -d # Henter siste versjon av containere og starter dem
-docker compose up integration-service race-service competition-format-service photo-service user-service event-service mongodb photo-service-gui
+docker compose up integration-service race-service competition-format-service photo-service user-service event-service mongodb photo-service-gui video-service-capture video-service-filter video-service-detect
 
 ```
 
