@@ -1,25 +1,26 @@
 # deploy-video-edge
 
-Deploy a service to collect photos and information from a video camera (running as dedicated edge-service).
+Deploy a service to collect video from a video camera (running as dedicated edge-service).
 
 ## Slik går du fram for å kjøre dette lokalt eller på en skytjeneste
 1. Sette opp virtuell server.
 2. Networking: Open up port 8080 for incoming traffic from any * incoming source.
-3. kommandoer for å innstallere containere (kan trolig optimaliseres - trenger ikke alt dette)
+3. Installer python 3.12 eller 3.13
+4. kommandoer for å innstallere containere (kan trolig optimaliseres - trenger ikke alt dette)
 
 ```Shell
 sudo apt update
 
-sudo apt install docker-compose
+curl -sSL https://get.docker.com | sh
 sudo git clone https://github.com/langrenn-sprint/deploy-video-edge.git
 # copy .env file og secrets (inkl GOOGLE_APPLICATION_CREDENTIALS)
 sudo usermod -aG docker $USER #deretter logge ut og inn igjen
 # secrets og konfigurasjon
 # opprette en .env fil med miljøvariable, se under
 source .env
-docker-compose pull
-docker-compose up &
-docker-compose up photo-service race-service event-service competition-format-service user-service mongodb
+docker compose pull
+docker compose up &
+docker compose up photo-service race-service event-service competition-format-service user-service mongodb photo-service-gui integration-service
 ```
 
 ## Tilgang til Google Pub-sub (lokasjon til secrets file må ligge i .env GOOGLE_APPLICATION_CREDENTIALS)
@@ -32,11 +33,8 @@ scp -i key.pem -r application_default_credentials.json azureuser@20.251.168.187:
 Tips: chmod 700 på nøkkelen
 ```
 
-### If required - virtual environment
-
-uv venv --python 3.13
-
-Activate:
+## Virtual env if required
+python3.13 -m venv .venv
 source .venv/bin/activate
 
 ## Starte opp containere
@@ -50,7 +48,7 @@ sudo chmod -R 777 files
 
 ```Shell
 docker-compose pull && docker-compose up -d # Henter siste versjon av containere og starter dem
-docker compose up integration-service race-service competition-format-service photo-service user-service event-service mongodb photo-service-gui video-service-capture video-service-filter video-service-detect
+docker compose up integration-service race-service competition-format-service photo-service user-service event-service mongodb photo-service-gui video-service-capture video-service-detect
 
 ```
 
@@ -59,7 +57,7 @@ docker compose up integration-service race-service competition-format-service ph
 Gå til folderen der docker-compose filen ligger og kjør følgende kommando:
 
 ```Shell
-docker-compose logs -f
+docker compose logs -f
 ```
 
 ## Stoppe containere
@@ -67,13 +65,13 @@ docker-compose logs -f
 Følgende kommando stopper alle services:
 
 ```Shell
-docker-compose stop
+docker compose stop
 ```
 
 Følgende kommando stopper og fjerner containere:
 
 ```Shell
-docker-compose down
+docker compose down
 ```
 
 ## slette images og containere
