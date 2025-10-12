@@ -21,6 +21,8 @@ services:
       - COMPETITION_FORMAT_HOST_PORT=8080
       - USERS_HOST_SERVER=user-service
       - USERS_HOST_PORT=8080
+      - GOOGLE_STORAGE_BUCKET=${GOOGLE_STORAGE_BUCKET}
+      - GOOGLE_STORAGE_SERVER=${GOOGLE_STORAGE_SERVER}
     volumes:
       - type: bind
         source: ./global_settings.json
