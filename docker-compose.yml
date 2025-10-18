@@ -183,6 +183,8 @@ services:
       - PHOTOS_HOST_PORT=8080
       - USERS_HOST_SERVER=user-service
       - USERS_HOST_PORT=8080
+      - GOOGLE_STORAGE_BUCKET=${GOOGLE_STORAGE_BUCKET}
+      - GOOGLE_STORAGE_SERVER=${GOOGLE_STORAGE_SERVER}
       - MODE=CAPTURE
     volumes:
       - type: bind
