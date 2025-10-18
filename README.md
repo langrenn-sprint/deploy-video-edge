@@ -3,10 +3,9 @@
 Deploy a service to collect video from a video camera (running as dedicated edge-service).
 
 ## Slik går du fram for å kjøre dette lokalt eller på en skytjeneste
-1. Sette opp virtuell server.
+1. Sette opp virtuell server - ubuntu 24.04 LTS
 2. Networking: Open up port 8080 for incoming traffic from any * incoming source.
-3. Installer python 3.12 eller 3.13
-4. kommandoer for å innstallere containere (kan trolig optimaliseres - trenger ikke alt dette)
+3. kommandoer for å innstallere containere (kan trolig optimaliseres - trenger ikke alt dette)
 
 ```Shell
 sudo apt-get update
@@ -20,7 +19,7 @@ sudo usermod -aG docker $USER #deretter logge ut og inn igjen
 source .env
 docker compose pull
 docker compose up &
-docker compose up photo-service race-service event-service competition-format-service user-service mongodb photo-service-gui integration-service
+docker compose up photo-service race-service event-service competition-format-service user-service mongodb photo-service-gui integration-service video-service-capture
 ```
 
 ## Tilgang til Google storage bucket (lokasjon til secrets file må ligge i .env GOOGLE_APPLICATION_CREDENTIALS)

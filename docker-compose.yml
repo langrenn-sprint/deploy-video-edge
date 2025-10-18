@@ -172,7 +172,7 @@ services:
         source: ./application_default_credentials.json
         target: /app/application_default_credentials.json
   video-service-capture:
-    image: ghcr.io/langrenn-sprint/video-service:latest
+    image: europe-north1-docker.pkg.dev/sigma-celerity-257719/docker-repository/video-service:latest
     environment:
       - ADMIN_USERNAME=${ADMIN_USERNAME}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
