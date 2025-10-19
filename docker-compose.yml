@@ -196,6 +196,9 @@ services:
       - type: bind
         source: ./error.log
         target: /app/error.log
+      - type: bind
+        source: ./application_default_credentials.json
+        target: /app/application_default_credentials.json
   mongodb:
     image: mongo:latest
     ports:
