@@ -45,11 +45,25 @@ mkdir files
 sudo chmod -R 777 files
 
 
+Starte opp minimum alle services
 ```Shell
 docker-compose pull && docker-compose up -d # Henter siste versjon av containere og starter dem
 docker compose up integration-service race-service competition-format-service photo-service user-service event-service mongodb photo-service-gui video-service-capture video-service-detect
 
 ```
+
+Starte opp minimum photo-service server - ingen workers
+```Shell
+docker compose up race-service competition-format-service photo-service user-service event-service mongodb photo-service-gui
+
+```
+
+Starte opp kun capture
+```Shell
+docker compose up integration-service video-service-capture
+
+```
+
 
 ## Monitorere logger
 
