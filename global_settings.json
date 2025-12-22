@@ -40,8 +40,5 @@
     "GOOGLE_STORAGE_SERVER": "https://storage.googleapis.com",
     "RACE_DURATION_ESTIMATE": 300,
     "RACE_TIME_DEVIATION_ALLOWED": 600,
-    "RACE_DURATION_LATEST5": "[0, 0, 0, 0, 0]",
-    "SIMULATION_CROSSINGS_START": "False",
-    "SIMULATION_START_LIST_FILE": "tests/files/startliste.csv",
-    "SIMULATION_FASTEST_TIME": "300"
+    "RACE_DURATION_LATEST5": "[0, 0, 0, 0, 0]"
 }

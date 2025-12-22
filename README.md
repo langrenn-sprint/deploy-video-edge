@@ -84,6 +84,8 @@ docker compose stop
 Følgende kommando stopper og fjerner containere:
 
 ```Shell
+docker stop $(docker ps -q)
+docker rm $(docker ps -aq)
 docker compose down
 ```
 
@@ -105,8 +107,12 @@ DB_USER=admin
 DB_PASSWORD=password
 EVENTS_HOST_SERVER=localhost
 EVENTS_HOST_PORT=8082
+RACE_HOST_SERVER=race-service
+RACE_HOST_PORT=8080
 PHOTOS_HOST_SERVER=localhost
 PHOTOS_HOST_PORT=8092
+USERS_HOST_SERVER=localhost
+USERS_HOST_PORT=8086
 FERNET_KEY=23EHUWpP_MyKey_MyKeyhxndWqyc0vO-MyKeySMyKey=
 GOOGLE_APPLICATION_CREDENTIALS="application_default_credentials.json"
 GOOGLE_CLOUD_PROJECT=sigma-celerity-257719
@@ -115,7 +121,24 @@ GOOGLE_STORAGE_SERVER=https://storage.googleapis.com
 GOOGLE_OAUTH_CLIENT_ID=12345My-ClientId12345.apps.googleusercontent.com
 JWT_EXP_DELTA_SECONDS=3600
 LOGGING_LEVEL=INFO
-USERS_HOST_SERVER=localhost
-USERS_HOST_PORT=8086
 LOCAL_PHOTO_DIRECTORY=/home/heming/github/deploy-video-edge/files
 ```
+
+Alternative for stand-alone nodes
+EVENTS_HOST_SERVER=event-service
+EVENTS_HOST_PORT=8080
+RACE_HOST_SERVER=race-service
+RACE_HOST_PORT=8080
+PHOTOS_HOST_SERVER=photo-service
+PHOTOS_HOST_PORT=8080
+USERS_HOST_SERVER=user-service
+USERS_HOST_PORT=8080
+
+EVENTS_HOST_SERVER=localhost
+EVENTS_HOST_PORT=8082
+PHOTOS_HOST_SERVER=localhost
+PHOTOS_HOST_PORT=8092
+RACE_HOST_SERVER=localhost
+RACE_HOST_PORT=8088
+USERS_HOST_SERVER=localhost
+USERS_HOST_PORT=8086
